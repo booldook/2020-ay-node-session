@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const createError = require('http-errors');
 const path = require('path');
 const dotenv = require('dotenv').config();
 const indexRouter = require('./routes/index');
@@ -21,5 +22,17 @@ app.locals.title = "Node.js 리뷰";
 
 
 /* Router */
+app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/', indexRouter);
 app.use('/board', boardRouter);
+
+/* Error */
+app.use((req, res, next) => {
+	res.send('<h1>404 Error</h1>');
+});
+
+app.use((err, req, res, next) => {
+
+});
+
