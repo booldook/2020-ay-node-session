@@ -29,10 +29,10 @@ app.use('/board', boardRouter);
 
 /* Error */
 app.use((req, res, next) => {
-	res.send('<h1>404 Error</h1>');
+	res.render('404.pug');
 });
 
 app.use((err, req, res, next) => {
-
+	res.send(err.message);
 });
 
