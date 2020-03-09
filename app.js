@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const dotenv = require('dotenv').config();
+const indexRouter = require('./routes/index');
+const boardRouter = require('./routes/board');
 
 /* Server Running */
 app.listen(process.env.port, () => {
@@ -19,6 +21,5 @@ app.locals.title = "Node.js 리뷰";
 
 
 /* Router */
-app.get('/', (req, res, next) => {
-	res.render('index.pug');
-});
+app.use('/', indexRouter);
+app.use('/board', boardRouter);
