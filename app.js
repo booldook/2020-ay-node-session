@@ -18,9 +18,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.locals.pretty = true;
 app.locals.title = "Node.js 리뷰";
 
-
 /* Middleware */
-
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 /* Router */
 app.use('/', express.static(path.join(__dirname, 'public')));
