@@ -1,0 +1,14 @@
+
+.jumbotron {padding: 2rem; margin-bottom: 1.5rem; background-color: #e8f0f8; border-radius: .3rem;}
+.signin-tit {width: 100%;}
+.signin-cont {width: 100%;}
+
+@media (min-width: 576px) {
+	.jumbotron {padding: 2rem 3rem;}
+}
+
+@media (min-width: 768px) {
+	.jumbotron {padding: 2rem 3rem;}
+	.signin-tit {width: 25%;}
+	.signin-cont {width: 73%;}
+}

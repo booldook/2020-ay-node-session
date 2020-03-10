@@ -5,4 +5,34 @@ block css
 block js
 	script(src="/js/user.js")
 block content
-	h1 회원가입
+	.jumbotron
+		h1.display-4 Sign Up
+		p.lead 본 사이트의 회원으로 등록하시면 다양한 혜택을 받으실 수 있습니다.
+		hr.my-4
+		p 기존 회원이신 분은 아래의 링크에 따라 로그인 하시기 바랍니다.
+		a.btn.btn-success(href="#" role="button" data-toggle="modal" data-target="#loginModal") Sign in
+	.signup-wrap.border.rounded.p-4
+		form(name="signupForm" method="post" action="/user/join")
+			div.d-flex.align-items-center.justify-content-between.flex-wrap.p-2.border-bottom
+				div.signin-tit 사용자 아이디
+				div.signin-cont
+					input.form-control(type="text" name="userid" placeholder="아이디")
+			div.d-flex.align-items-center.justify-content-between.flex-wrap.p-2.border-bottom
+				div.signin-tit 사용자 패스워드
+				div.signin-cont
+					input.form-control(type="password" name="userpw")
+			div.d-flex.align-items-center.justify-content-between.flex-wrap.p-2.border-bottom
+				div.signin-tit 사용자 패스워드 확인
+				div.signin-cont
+					input.form-control(type="password" name="userpw2")
+			div.d-flex.align-items-center.justify-content-between.flex-wrap.p-2.border-bottom
+				div.signin-tit 사용자 이름(닉네임)
+				div.signin-cont
+					input.form-control(type="text" name="username")
+			div.d-flex.align-items-center.justify-content-between.flex-wrap.p-2.border-bottom
+				div.signin-tit 사용자 이메일
+				div.signin-cont
+					input.form-control(type="text" name="email")
+			div.text-center.py-3
+				button#bt-join.btn.btn-primary 가입 
+				button.btn.btn-danger(type="reset") 다시작성
