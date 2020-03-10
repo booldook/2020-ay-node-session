@@ -5,6 +5,7 @@ const path = require('path');
 const dotenv = require('dotenv').config();
 const indexRouter = require('./routes/index');
 const boardRouter = require('./routes/board');
+const userRouter = require('./routes/user');
 
 /* Server Running */
 app.listen(process.env.port, () => {
@@ -26,6 +27,7 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/', indexRouter);
 app.use('/board', boardRouter);
+app.use('/user', userRouter);
 
 /* Error */
 app.use((req, res, next) => {

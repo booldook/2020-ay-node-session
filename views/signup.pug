@@ -1,2 +1,8 @@
-//- 1. routes에 user.js 를 만들고 라우터로 만든다.
-//- 2. user.js 에 get으로 "/signup" 요청이 들어오면 signup.pug를 띄워준다...내용은 회원가입 타이틀이 보인다.
+extends layout/default.pug
+
+block css
+	link(rel="stylesheet", href="/css/user.css")
+block js
+	script(src="/js/user.js")
+block content
+	h1 회원가입
