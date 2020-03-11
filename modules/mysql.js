@@ -5,7 +5,7 @@ const connect = mysql.createPool({
 	user: "root",
 	password: process.env.dbpass,
 	database: "node",
-	connectLimit: 10,
+	connectionLimit: 10,
 	waitForConnections: true
 });
 
