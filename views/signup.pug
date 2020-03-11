@@ -12,7 +12,7 @@ block content
 		p 기존 회원이신 분은 아래의 링크에 따라 로그인 하시기 바랍니다.
 		a.btn.btn-success(href="#" role="button" data-toggle="modal" data-target="#loginModal") Sign in
 	.signup-wrap.border.rounded.p-4
-		form(name="signupForm" method="post" action="/user/join")
+		form(name="signupForm" method="post" action="/user/join" onsubmit="return signupSubmit();")
 			div.d-flex.align-items-center.justify-content-between.flex-wrap.p-2.border-bottom
 				div.signin-tit 사용자 아이디
 				div.signin-cont
