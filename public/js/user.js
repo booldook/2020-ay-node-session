@@ -5,6 +5,7 @@ var $userpw2 = $(f.userpw2);
 var $username = $(f.username);
 var $email = $(f.email);
 var useridValid = false;
+var emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
 $userid.blur(function(){
 	if($userid.val().trim() == "" || $userid.val().trim().length < 4) {
@@ -19,7 +20,7 @@ $userid.blur(function(){
 			else {
 				$userid.next().remove();
 				$userid.css({"border-color": "blue"});
-				useridValide = true;
+				useridValid = true;
 			}
 		}
 	}
@@ -36,6 +37,32 @@ function signupSubmit() {
 		$userid.focus();
 		return false;
 	}
+	if($userpw.val().trim().length < 4) {
+		alert("패스워드는 4글자 이상입니다.");
+		$userpw.focus();
+		return false;
+	}
+	if($userpw.val().trim() != $userpw2.val().trim()) {
+		alert("패스워드가 일치하지 않습니다.");
+		$userpw.focus();
+		return false;
+	}
+	if($username.val().trim() == "") {
+		alert("이름(닉네임)을 작성해 주세요.");
+		$username.focus();
+		return false;
+	}
+	if($email.val().trim() == "") {
+		alert("이메일을 입력해 주세요.");
+		$email.focus();
+		return false;
+	}
+	if(!$email.val().trim().match(emailRegExp)) {
+		alert("이메일을 정확히 입력해 주세요.");
+		$email.focus();
+		return false;
+	}
+	return true;
 }
 
 function useridFail(msg) {
