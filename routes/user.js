@@ -28,4 +28,24 @@ router.post('/idchk', async (req, res, next) => {
 	res.json(result[0]);
 });
 
+router.post("/login", async (req, res, next) => {
+	let { userid, userpw } = req.body;
+	let sql, sqls = [], result, compare = false;
+	sql = "SELECT * FROM member WHERE userid=?";
+	result = await connect.execute(sql, [userid]);
+	if(result[0].length > 0) {
+		compare = await bcrypt.compare(userpw + process.env.passSalt, result[0][0].userpw);
+		if(compare) {
+			res.redirect("/");
+		}
+		else {
+			res.send(alert("아이디와 패스워드가 올바르지 않습니다.", "/"));
+		}
+	}
+	else {
+		res.send(alert("아이디와 패스워드가 올바르지 않습니다.", "/"));
+	}
+});
+
+
 module.exports = router;

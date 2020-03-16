@@ -64,7 +64,7 @@ function signupSubmit() {
 }
 
 function useridFail(msg) {
-	useridValide = false;
+	useridValid = false;
 	$userid.css({"border-color": "red"});
 	$userid.next().remove();
 	$userid.parent().append('<div class="pt-2 text-danger">* '+msg+'</div>');
@@ -72,7 +72,7 @@ function useridFail(msg) {
 }
 
 function useridSuccess(msg) {
-	useridValide = true;
+	useridValid = true;
 	$userid.css({"border-color": "blue"});
 	$userid.next().remove();
 	$userid.parent().append('<div class="pt-2 text-primary">* '+msg+'</div>');
