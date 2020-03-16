@@ -18,9 +18,7 @@ $userid.blur(function(){
 				useridFail("중복된 아이디가 있습니다. 다른 아이디를 선택해 주세요.");
 			}
 			else {
-				$userid.next().remove();
-				$userid.css({"border-color": "blue"});
-				useridValid = true;
+				useridSuccess("사용할 수 있는 아이디 입니다. Cool~");
 			}
 		}
 	}
@@ -66,11 +64,19 @@ function signupSubmit() {
 }
 
 function useridFail(msg) {
+	useridValide = false;
 	$userid.css({"border-color": "red"});
 	$userid.next().remove();
 	$userid.parent().append('<div class="pt-2 text-danger">* '+msg+'</div>');
 	$userid.focus();
-	useridValide = false;
+}
+
+function useridSuccess(msg) {
+	useridValide = true;
+	$userid.css({"border-color": "blue"});
+	$userid.next().remove();
+	$userid.parent().append('<div class="pt-2 text-primary">* '+msg+'</div>');
+	$userid.focus();
 }
 
 
