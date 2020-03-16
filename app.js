@@ -5,6 +5,7 @@ const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 const indexRouter = require('./routes/index');
 const boardRouter = require('./routes/board');
 const userRouter = require('./routes/user');
@@ -25,11 +26,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser(process.env.cookieSalt));
 app.use(session({
-	cookie: { secure: true },
-	resave: false,
 	secret: process.env.cookieSalt,
-	saveUninitialized: true
-}));
+	resave: true,
+	saveUninitialized: true,
+	store: new FileStore()
+}))
 
 /* Router */
 app.use('/', express.static(path.join(__dirname, 'public')));
@@ -44,6 +45,12 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-	res.send(err.message);
+	if(err) {
+		console.log(err);
+		res.json({ 
+			error: err.message,
+			status: err.status 
+		});
+	}
 });
 

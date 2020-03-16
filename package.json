@@ -19,6 +19,7 @@
     "http-errors": "^1.7.3",
     "multer": "^1.4.2",
     "mysql2": "^2.1.0",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "session-file-store": "^1.4.0"
   }
 }

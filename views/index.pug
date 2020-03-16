@@ -6,3 +6,5 @@ block js
 	script(src="/js/index.js")
 block content
 	h1 메인페이지
+	if user
+		p= user.username
