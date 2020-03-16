@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
+const dotenv = require('dotenv').config();
 const createError = require('http-errors');
 const path = require('path');
-const dotenv = require('dotenv').config();
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const indexRouter = require('./routes/index');
 const boardRouter = require('./routes/board');
 const userRouter = require('./routes/user');
@@ -21,6 +23,13 @@ app.locals.title = "Node.js 리뷰";
 /* Middleware */
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cookieParser(process.env.cookieSalt));
+app.use(session({
+	cookie: { secure: true },
+	resave: false,
+	secret: process.env.cookieSalt,
+	saveUninitialized: true
+}));
 
 /* Router */
 app.use('/', express.static(path.join(__dirname, 'public')));

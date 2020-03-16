@@ -36,6 +36,11 @@ router.post("/login", async (req, res, next) => {
 	if(result[0].length > 0) {
 		compare = await bcrypt.compare(userpw + process.env.passSalt, result[0][0].userpw);
 		if(compare) {
+			req.user = {};
+			req.session.user.id = result[0][0].id;
+			req.session.user.userid = result[0][0].userid;
+			req.session.user.username = result[0][0].username;
+			req.session.user.email = result[0][0].email;
 			res.redirect("/");
 		}
 		else {
