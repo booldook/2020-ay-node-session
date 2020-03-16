@@ -76,7 +76,6 @@ function useridSuccess(msg) {
 	$userid.css({"border-color": "blue"});
 	$userid.next().remove();
 	$userid.parent().append('<div class="pt-2 text-primary">* '+msg+'</div>');
-	$userid.focus();
 }
 
 
