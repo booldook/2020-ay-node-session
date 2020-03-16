@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `gallery` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 테이블 데이터 node.gallery:~47 rows (대략적) 내보내기
+-- 테이블 데이터 node.gallery:~44 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `gallery` DISABLE KEYS */;
 INSERT INTO `gallery` (`id`, `title`, `writer`, `wdate`, `savefile`, `realfile`, `rnum`, `content`) VALUES
 	(1, '용왕이 거북이의 간을', '별주부', '2020-02-25 11:02:54', '200225-1582596174220-784.jpg', '04_1_3_1.jpg', 0, '....'),
@@ -114,12 +114,13 @@ CREATE TABLE IF NOT EXISTS `member` (
   `api` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'local' COMMENT '카카오, 네이버 등',
   `api_id` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '카카오, 네이버 아이디',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 테이블 데이터 node.member:~4 rows (대략적) 내보내기
+-- 테이블 데이터 node.member:~1 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT INTO `member` (`id`, `userid`, `userpw`, `username`, `email`, `created`, `updated`, `deleted`, `api`, `api_id`) VALUES
-	(1, 'booldook', '1111', '임덕규', 'booldook@gmail.com', '2020-03-10 12:17:54', '2020-03-10 12:17:54', NULL, 'local', NULL);
+	(11, 'booldook', '$2b$08$zhpFnYMbucubM8cXdHgYqeZdu09WN0koPvFHWMGFatUOQiTtOBU2G', '불뚝', 'booldook@gmail.com', '2020-03-16 09:58:51', '2020-03-16 09:58:51', NULL, 'local', NULL),
+	(12, 'booldooks', '$2b$08$oFGcI2b/2ecF7fOgy32rAuACqSjJe0eS965vJ16S3VuHJ9zK0gu9m', '불뚝2', 'booldook@kakao.com', '2020-03-16 09:59:38', '2020-03-16 09:59:38', NULL, 'local', NULL);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
