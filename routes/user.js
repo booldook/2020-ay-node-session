@@ -30,7 +30,7 @@ router.post('/idchk', async (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
 	let { userid, userpw } = req.body;
-	let sql, sqls = [], result, compare = false;
+	let sql, result, compare = false;
 	sql = "SELECT * FROM member WHERE userid=?";
 	result = await connect.execute(sql, [userid]);
 	if(result[0].length > 0) {

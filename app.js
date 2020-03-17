@@ -5,7 +5,7 @@ const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const FileStore = require('session-file-store')(session);
+// const FileStore = require('session-file-store')(session);
 const indexRouter = require('./routes/index');
 const boardRouter = require('./routes/board');
 const userRouter = require('./routes/user');
@@ -27,9 +27,10 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser(process.env.cookieSalt));
 app.use(session({
 	secret: process.env.cookieSalt,
-	resave: true,
-	saveUninitialized: true,
-	store: new FileStore()
+	resave: false,
+	saveUninitialized: false,
+	cookie: {secure: false}
+	// store: new FileStore()
 }))
 
 /* Router */
