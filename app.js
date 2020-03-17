@@ -5,7 +5,10 @@ const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const FileStore = require('session-file-store')(session);	//세션을 파일에 저장(실무X)
+// const FileStore = require('session-file-store')(session);	//세션을 파일에 저장(실무X)
+// const redis = require('redis');
+// const ConnectRedis = require('connect-redis')(session);
+const MySQLConnect = require('express-mysql-session')(session);
 const indexRouter = require('./routes/index');
 const boardRouter = require('./routes/board');
 const userRouter = require('./routes/user');
@@ -25,12 +28,27 @@ app.locals.title = "Node.js 리뷰";
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser(process.env.cookieSalt));
+
 app.use(session({
 	secret: process.env.cookieSalt,
 	resave: false,
 	saveUninitialized: false,
 	cookie: {secure: false},
-	store: new FileStore()
+	// store: new FileStore()
+	/* store: new ConnectRedis({
+		"host": "localhost",
+		"port": 6379,
+		"prefix": "session:",
+		"client": redis.createClient(6379, "localhost"),
+		"db": 0
+	}) */
+	store: new MySQLConnect({
+		host: 'localhost',
+		port: 3306,
+		user: 'root',
+		password: process.env.dbpass,
+		database: 'node'
+	})
 }))
 
 /* Router */

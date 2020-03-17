@@ -16,8 +16,9 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
 			else
 				li.nav-item
 					a.nav-link(href="/board") Board
-		div.my-2.d-flex
+		div.my-2.d-flex.align-items-center
 			if user
+				div.mr-3.text-white= user.username
 				button.btn.btn-sm.btn-outline-warning.my-2.my-sm-0(onclick=`location.href="/user/signout"`) Sign out
 			else
 				.nav-item
