@@ -6,7 +6,7 @@ const { alert } = require('../modules/util');
 
 
 router.get('/signup', (req, res) => {
-	let pugVals = {name: 'signup'};
+	let pugVals = {name: 'signup', user: req.session.user ? req.session.user : null};
 	res.render('signup.pug', pugVals);
 });
 

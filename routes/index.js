@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res, next) => { 
-	let user = req.session.user ? req.session.user : null;
-	let pugVals = { name: 'index', user };
+	let pugVals = { name: 'index', user: req.session.user ? req.session.user : null };
 	res.render('index', pugVals);
 });
 
