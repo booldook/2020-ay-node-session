@@ -5,7 +5,7 @@ const createError = require('http-errors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-// const FileStore = require('session-file-store')(session);
+const FileStore = require('session-file-store')(session);	//세션을 파일에 저장(실무X)
 const indexRouter = require('./routes/index');
 const boardRouter = require('./routes/board');
 const userRouter = require('./routes/user');
@@ -29,8 +29,8 @@ app.use(session({
 	secret: process.env.cookieSalt,
 	resave: false,
 	saveUninitialized: false,
-	cookie: {secure: false}
-	// store: new FileStore()
+	cookie: {secure: false},
+	store: new FileStore()
 }))
 
 /* Router */

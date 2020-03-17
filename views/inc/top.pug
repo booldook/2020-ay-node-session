@@ -16,14 +16,10 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
 			else
 				li.nav-item
 					a.nav-link(href="/board") Board
-			if name == "signup"
-				li.nav-item.active
-					a.nav-link(href="/user/signup") Sign up
+		div.my-2.d-flex
+			if user
+				button.btn.btn-sm.btn-outline-warning.my-2.my-sm-0(onclick=`location.href="/user/signout"`) Sign out
 			else
-				li.nav-item
-					a.nav-link.text-warning(href="/user/signup") Sign up
-			li.nav-item
-				a.nav-link(data-toggle="modal" data-target="#loginModal" style="cursor: pointer;") Sign in
-		form.form-inline.my-2.my-lg-0
-			input.form-control.form-control-sm.mr-sm-2(type="search" placeholder="Search" aria-label="Search")
-			button.btn.btn-sm.btn-outline-success.my-2.my-sm-0(type="submit") Search
+				.nav-item
+					a.nav-link.text-success(data-toggle="modal" data-target="#loginModal" style="cursor: pointer;") Sign in
+				button.btn.btn-sm.btn-outline-success.my-2.my-sm-0(onclick=`location.href="/user/signup"`) Sign up
